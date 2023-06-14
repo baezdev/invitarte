@@ -13,7 +13,7 @@ export const Phrase = () => {
           <h5
             className="absolute left-0 right-0 z-30 text-2xl font-semibold text-center md:text-6xl top-1/2"
           >
-            Anímate a hacer tu evento único <br /> antes de que comience
+            Anímate a hacer tu evento único
           </h5>
         </div>
       </Container>

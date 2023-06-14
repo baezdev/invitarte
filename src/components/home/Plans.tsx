@@ -57,23 +57,39 @@ export const Plans = () => {
   )
 }
 
-const Plan: React.FC<PlanProps> = ({ href, img, title, icon, description, price, color }) => {
-  const colors = {
-    pink: "third",
-    purple: "primary",
-  }
-
+const Plan: React.FC<PlanProps> = ({ 
+  href, 
+  img,
+  title, 
+  icon, 
+  description, 
+  price, 
+  color 
+}) => {
   return (
     <a
       href={href}
       className={twMerge(`block w-full md:w-[425px] border-4 rounded-3xl hover:scale-105 transition-all duration-200 ease-in-out group`, `${color === "pink" ? "hover:border-third" : "hover:border-primary"}`) }
     >
-      <Image src={`/images/${img}.svg`} alt={title} className="w-full mx-6 grayscale group-hover:grayscale-0" width={100} height={100} />
+      <Image
+        src={`/images/${img}.svg`}
+        alt={title}
+        className="w-full mx-6 grayscale group-hover:grayscale-0"
+        width={100}
+        height={100} 
+      />
       <p
         className="flex items-center justify-center gap-2 text-4xl font-bold text-center capitalize"
       >
         {title}
-        <span><Image src={`/icons/${icon}.svg`} alt={icon} width={30} height={30} /></span>
+        <span>
+          <Image
+            src={`/icons/${icon}.svg`}
+            alt={icon}
+            width={30}
+            height={30} 
+          />
+        </span>
       </p>
       <p className="px-10 mt-5 text-center">
         {description}
