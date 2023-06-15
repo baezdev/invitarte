@@ -1,4 +1,4 @@
-import { Login } from "@/components/auth/Login"
+import { Login } from "@/app/(auth)/components/Login"
 
 const LoginPage = () => {
   return (

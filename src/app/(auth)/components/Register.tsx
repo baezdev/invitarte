@@ -1,11 +1,21 @@
-import { Input } from "../form/Input"
-import { Button } from "../ui/Button"
-import { Email, Lock } from "../ui/Icons"
+import { Input } from "@/components/form/Input";
+import { Button } from "@/components/ui/Button";
+import { Email, Lock, User } from "@/components/ui/Icons";
 
 
-export const Login = () => {
+export const Register = () => {
   return (
     <form className="mt-5">
+      <div className="mb-5">
+        <Input
+          name="name"
+          type="text"
+          label="Nombre"
+          holder="Su nombre"
+          icon={<User />}
+          done
+        />
+      </div>
       <div className="mb-5">
         <Input
           name="email"
@@ -27,8 +37,8 @@ export const Login = () => {
         />
       </div>
       <div className="mt-9">
-        <Button>Acceder</Button>
+        <Button>Registrate</Button>
       </div>
     </form>
-  )
-}
+  );
+};
