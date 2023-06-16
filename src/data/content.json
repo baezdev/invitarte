@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Contador",
+    "desc": "Permite que tus invitados estén notificados de los días que falten para el evento.",
+    "icon": "contador"
+  },
+  {
+    "title": "Galeria de Fotos",
+    "desc": "Crea un carrete personalizado con fotos y recuerdos para compartir con tus invitados.",
+    "icon": "galeria"
+  },
+  {
+    "title": "Mesa de Regalos",
+    "desc": "Ayuda a tus invitados, comparte con ellos ideas de lo que podrían obsequiarte.",
+    "icon": "regalos"
+  },
+  {
+    "title": "Ubicación",
+    "desc": "Que nadie falte, comparte la ubicación exacta del evento.",
+    "icon": "ubicacion"
+  },
+  {
+    "title": "Asistencia",
+    "desc": "Crea una lista de tus invitados y permite que confirmen su asistencia.",
+    "icon": "asistencia"
+  },
+  {
+    "title": "Vestimenta",
+    "desc": "Notifica a tus invitados si elegiste alguna temática para tu evento.",
+    "icon": "vestimenta"
+  },
+  {
+    "title": "Padrinos",
+    "desc": "Crea una forma especial de pedir que formen parte de tu evento.",
+    "icon": "padrinos"
+  },
+  {
+    "title": "Agenda",
+    "desc": "Nadie puede olvidar tu importante fecha, podra agregarla al calendario",
+    "icon": "calendario"
+  },
+  {
+    "title": "Y más...",
+    "desc": "Tienes una idea adicional? Envíanos tus sugerencias estamos para escucharte.",
+    "icon": "otros"
+  }
+]

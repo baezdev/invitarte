@@ -7,10 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: "#a259ff",
+        secon: "#ffc700",
+        third: "#ec4899",
+      },
+      keyframes: {
+        dance: {
+          "0%": { transform: "rotate(-8deg)" },
+          "50%": { transform: "rotate(8deg)" },
+          "100%": { transform: "rotate(-8deg)" },
+        },
+      },
+      animation: {
+        dance: "dance .3s linear infinite",
       },
     },
   },
