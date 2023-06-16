@@ -1,4 +1,5 @@
 import { Login } from "@/app/(auth)/components/Login"
+import { LoginSocialMedia } from "../components/LoginSocialMedia"
 
 const LoginPage = () => {
   return (
@@ -9,11 +10,11 @@ const LoginPage = () => {
       </p>
       <h1 className="text-3xl font-bold text-center my-11">Logo xd</h1>
       <Login />
-      <p className="text-base text-center text-gray-400 md:text-sm my-9">
+      <p className="my-4 text-base text-center text-gray-400 md:text-sm">
         O puedes conectarte con
       </p>
-      {/* <LoginSocialNetworks client:load /> */}
-      <p className="font-medium text-center my-7">
+      <LoginSocialMedia />
+      <p className="my-4 font-medium text-center">
         No tienes una cuenta? <a href="/register" className="font-semibold text-third"
           >Registrate aquí</a
         >
