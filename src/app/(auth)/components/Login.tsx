@@ -4,38 +4,33 @@ import { Input } from "@/components/form/Input"
 import { Button } from "@/components/ui/Button"
 import { Email, Lock } from "@/components/ui/Icons"
 import { Formik, Form } from 'formik'
+import { LoginSchema } from '@/helpers/validateForm'
  
-/* type Inputs = {
-  email: string,
-  password: string
-} */
-
 const initialValues = {
   email: '',
   password: ''
 }
 
+const handleSubmit = (values: any) => {
+  console.log(values)
+}
+
 export const Login = () => {
   return (
     <Formik
-      initialValues={initialValues}  
-      onSubmit={(values, actions) => {
-        console.log(values)
-      }}
+      initialValues={initialValues}
+      onSubmit={values => handleSubmit(values)}
+      validationSchema={LoginSchema}
     >
-      <Form className="mt-5">
-        <div className="mb-5">
+      <Form className="flex flex-col mt-5 gap-y-5">
           <Input
             name="email"
             type="email"
             label="Email o Número de teléfono"
             holder="ejemplo@correo.com"
             icon={<Email />}
-            validation={{ required: true, }}
             done
           />
-        </div>
-        <div className="mb-5">
           <Input
             name="password"
             type="password"
@@ -44,9 +39,8 @@ export const Login = () => {
             icon={<Lock />}
             done
           />
-        </div>
-        <div className="mt-9">
-          <Button>Acceder</Button>
+        <div className="mt-4">
+          <Button type="submit">Acceder</Button>
         </div>
       </Form>
     </Formik>

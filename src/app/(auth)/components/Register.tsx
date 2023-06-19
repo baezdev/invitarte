@@ -1,28 +1,38 @@
 'use client'
 
-import { useForm, FormProvider } from "react-hook-form"
+import { Formik, Form } from 'formik'
+ 
 import { Input } from "@/components/form/Input";
 import { Button } from "@/components/ui/Button";
 import { Email, Lock, User } from "@/components/ui/Icons";
+import { RegisterSchema } from '@/helpers/validateForm';
 
+const initialValues = {
+  username: '',
+  email: '',
+  password: ''
+}
+
+const handleSubmit = (values: any) => {
+  console.log(values)
+}
 
 export const Register = () => {
-  const formMethods = useForm()
-
   return (
-    <FormProvider {...formMethods}>
-      <form className="mt-5">
-        <div className="mb-5">
+    <Formik
+      initialValues={initialValues}  
+      onSubmit={(values) => handleSubmit(values)}
+      validationSchema={RegisterSchema}
+    >
+      <Form className="flex flex-col mt-5 gap-y-5">
           <Input
-            name="name"
+            name="username"
             type="text"
             label="Nombre"
             holder="Su nombre"
             icon={<User />}
             done
           />
-        </div>
-        <div className="mb-5">
           <Input
             name="email"
             type="email"
@@ -31,8 +41,6 @@ export const Register = () => {
             icon={<Email />}
             done
           />
-        </div>
-        <div className="mb-5">
           <Input
             name="password"
             type="password"
@@ -41,11 +49,10 @@ export const Register = () => {
             icon={<Lock />}
             done
           />
+        <div className="mt-4">
+          <Button type='submit'>Registrate</Button>
         </div>
-        <div className="mt-9">
-          <Button>Registrate</Button>
-        </div>
-      </form>
-    </FormProvider>
-  );
-};
+      </Form>
+    </Formik>
+  )
+}
