@@ -1,14 +1,17 @@
 'use client'
 
 import { Facebook, Google } from "@/components/ui/Icons";
+import { signInWithFacebook, signOut } from "@/service/auth";
 
 export const LoginSocialMedia = () => {
-  const handleLoginGoogle = () => {
-    console.log('Google')
+  const handleLoginGoogle = async () => {
+    await signOut()
+    alert('LA sesion se cerro correctamente')
   }
 
-  const handleLoginFacebook = () => {
-    console.log('Facebook')
+  const handleLoginFacebook = async () => {
+    const signIn = await signInWithFacebook()
+    console.log(signIn)
   }
 
   return (
