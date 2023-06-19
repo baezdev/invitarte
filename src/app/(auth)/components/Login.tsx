@@ -1,9 +1,10 @@
 'use client'
 
+import { Formik, Form } from 'formik'
+
 import { Input } from "@/components/form/Input"
 import { Button } from "@/components/ui/Button"
 import { Email, Lock } from "@/components/ui/Icons"
-import { Formik, Form } from 'formik'
 import { LoginSchema } from '@/helpers/validateForm'
  
 const initialValues = {
@@ -11,11 +12,11 @@ const initialValues = {
   password: ''
 }
 
-const handleSubmit = (values: any) => {
-  console.log(values)
-}
-
 export const Login = () => {
+  const handleSubmit = (values: any) => {
+    console.log(values)
+  }
+
   return (
     <Formik
       initialValues={initialValues}

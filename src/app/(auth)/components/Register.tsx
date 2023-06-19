@@ -13,11 +13,11 @@ const initialValues = {
   password: ''
 }
 
-const handleSubmit = (values: any) => {
-  console.log(values)
-}
-
 export const Register = () => {
+  const handleSubmit = (values: any) => {
+    console.log(values)
+  }
+
   return (
     <Formik
       initialValues={initialValues}  
