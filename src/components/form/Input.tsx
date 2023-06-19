@@ -11,10 +11,9 @@ interface InputProps {
   holder: string;
   icon: JSX.Element;
   done?: boolean;
-  validation?: any
 }
 
-export const Input = ({ ...props }) => {
+export const Input = ({ ...props }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
 
   const { name, label, type, holder, icon, done } = props
@@ -24,7 +23,7 @@ export const Input = ({ ...props }) => {
   }
 
   return (
-    <>
+    <div>
       <label htmlFor={name} className="block mb-2 font-semibold">
         {label}
       </label>
@@ -61,6 +60,6 @@ export const Input = ({ ...props }) => {
           </span>
         )}
       </ErrorMessage>
-    </>
+    </div>
   );
 };
