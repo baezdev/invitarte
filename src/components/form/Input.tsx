@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ErrorMessage, Field } from "formik"
+import { ErrorMessage, Field, useField } from "formik"
+import { twMerge } from "tailwind-merge";
 
 interface InputProps {
   name: string;
@@ -15,8 +16,10 @@ interface InputProps {
 
 export const Input = ({ ...props }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
+  const [_, meta] = useField(props)
 
-  const { name, label, type, holder, icon, done } = props
+
+  const { name, label, type, holder, icon } = props
 
   const switchShowPassword = () => {
     setShowPassword(!showPassword)
@@ -27,7 +30,7 @@ export const Input = ({ ...props }: InputProps) => {
       <label htmlFor={name} className="block mb-2 font-semibold">
         {label}
       </label>
-      <div className="flex justify-between gap-x-3 py-4 md:py-3 px-4 border-2 border-gray-200 focus-within:border-primary bg-gray-50 rounded-xl items-center [&>svg]:focus-within:fill-primary focus-within:bg-white transition-all duration-200 w-full">
+      <div className={twMerge(`flex justify-between gap-x-3 py-4 md:py-3 px-4 border-2 bg-gray-50 rounded-xl items-center focus-within:bg-white transition-all duration-200 w-full focus-within:border-primary [&>svg]:focus-within:fill-primary`, `${meta.error && meta.touched ? 'border-red-500 [&>svg]:fill-red-500' : 'border-gray-200'}`) }>
         {icon}
         <Field
           {...props}
@@ -48,15 +51,17 @@ export const Input = ({ ...props }: InputProps) => {
               Ver
             </button>
           )}
-          {done && <Image src="/icons/check.svg" alt="done" width={24} height={24} />}
+          {!meta.error && meta.touched && 
+            <Image src="/icons/check.svg" alt="done" width={24} height={24} />
+          }
         </div>
       </div>
       <ErrorMessage name={name}>
-        {(msg: string) => (
+        {(error: string) => (
           <span 
             className='block mt-1 font-semibold text-red-500'
           >
-            {msg}
+            {error}
           </span>
         )}
       </ErrorMessage>
