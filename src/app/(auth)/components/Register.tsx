@@ -6,6 +6,13 @@ import { Input } from "@/components/form/Input";
 import { Button } from "@/components/ui/Button";
 import { Email, Lock, User } from "@/components/ui/Icons";
 import { RegisterSchema } from '@/helpers/validateForm';
+import { createUser } from '@/service/auth';
+
+type RegisterValues = {
+  username: string,
+  email: string,
+  password: string
+}
 
 const initialValues = {
   username: '',
@@ -14,8 +21,14 @@ const initialValues = {
 }
 
 export const Register = () => {
-  const handleSubmit = (values: any) => {
-    console.log(values)
+  const handleSubmit = async (values: RegisterValues) => {
+    const signIn = await createUser({
+      email: values.email,
+      password: values.password,
+      username: values.username
+    })
+
+    console.log(signIn)
   }
 
   return (
@@ -28,10 +41,9 @@ export const Register = () => {
           <Input
             name="username"
             type="text"
-            label="Nombre"
-            holder="Su nombre"
+            label="Nombre de usuario"
+            holder="Ejemplo_1"
             icon={<User />}
-            done
           />
           <Input
             name="email"
@@ -39,15 +51,13 @@ export const Register = () => {
             label="Email o Número de teléfono"
             holder="ejemplo@correo.com"
             icon={<Email />}
-            done
           />
           <Input
             name="password"
             type="password"
             label="Contraseña"
-            holder="Minimo 8 caracteres"
+            holder="8 caracteres y un número"
             icon={<Lock />}
-            done
           />
         <div className="mt-4">
           <Button type='submit'>Registrate</Button>
