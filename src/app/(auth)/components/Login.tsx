@@ -6,20 +6,31 @@ import { Input } from "@/components/form/Input"
 import { Button } from "@/components/ui/Button"
 import { Email, Lock } from "@/components/ui/Icons"
 import { LoginSchema } from '@/helpers/validateForm'
- 
+import { signInWithEmail } from '@/service/auth'
+
+type LoginValues = {
+  email: string,
+  password: string
+}
+
 const initialValues = {
   email: '',
   password: ''
 }
 
 export const Login = () => {
-  const handleSubmit = (values: any) => {
-    console.log(values)
+  const handleSubmit = async (values: LoginValues) => {
+    const login = await signInWithEmail({
+      email: values.email,
+      password: values.password
+    })
+
+    console.log(login)
   }
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initialValues} 
       onSubmit={values => handleSubmit(values)}
       validationSchema={LoginSchema}
     >
@@ -30,15 +41,13 @@ export const Login = () => {
             label="Email o Número de teléfono"
             holder="ejemplo@correo.com"
             icon={<Email />}
-            done
           />
           <Input
             name="password"
             type="password"
             label="Contraseña"
-            holder="Minimo 8 caracteres"
+            holder="8 caracteres y un número"
             icon={<Lock />}
-            done
           />
         <div className="mt-4">
           <Button type="submit">Acceder</Button>
