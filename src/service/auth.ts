@@ -9,7 +9,8 @@ type userProps = {
 export const createUser = async ({ email, password, username }: userProps) => {
   const { data, error } = await supabase.auth.signUp({
     email,
-    password
+    password,
+    options: { data: { username } }
   })
 
   return {
@@ -23,6 +24,7 @@ export const signInWithEmail = async ({ email, password }: userProps) => {
     email,
     password
   })
+
 
   return {
     data,
