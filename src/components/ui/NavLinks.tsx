@@ -4,10 +4,11 @@ import { useMemo, useState } from "react";
 
 import { LinkButton } from "./LinkButton";
 import { Close, Menu } from "./Icons";
+import { UserAvatar } from "./UserAvatar";
+import { useSession } from "@/hooks/useSession";
 
 export const NavLinks = () => {
-  const [openMenu, setOpenMenu] = useState(false);
-
+  const [openMenu, setOpenMenu] = useState(false)
   const links = useMemo(() => [
     {
       text: "planes",
@@ -26,6 +27,7 @@ export const NavLinks = () => {
       href: "/contact",
     },
   ], [])
+  const { user } = useSession()
 
   return (
     <div>
@@ -48,7 +50,9 @@ export const NavLinks = () => {
           </li>
         ))}
         <li>
-          <LinkButton text="acceder" href="/login" />
+          {user
+            ? <UserAvatar />
+            : <LinkButton text="acceder" href="/login" />}
         </li>
       </ul>
     </div>
