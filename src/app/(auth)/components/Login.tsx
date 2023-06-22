@@ -10,7 +10,7 @@ import { Email, Lock } from "@/components/ui/Icons"
 import { LoginSchema } from '@/helpers/validateForm'
 import { signInWithEmail } from '@/service/auth'
 import { useRouter } from 'next/navigation';
-import { translateMessage } from '@/helpers/translateErrorMessage';
+import { translateMessage } from '@/helpers/translateMessage';
 
 type LoginValues = {
   email: string,

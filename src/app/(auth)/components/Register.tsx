@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Email, Lock, User } from "@/components/ui/Icons";
 import { createUser } from '@/service/auth';
 import { RegisterSchema } from '@/helpers/validateForm';
-import { translateMessage } from '@/helpers/translateErrorMessage';
+import { translateMessage } from '@/helpers/translateMessage';
 import { useRouter } from 'next/navigation';
 
 type RegisterValues = {
