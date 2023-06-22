@@ -60,3 +60,11 @@ export const signOut = async () => {
     error
   }
 }
+
+export const getSession = async () => {
+  const { data, error } = await supabase.auth.getSession()
+  return {
+    data,
+    error
+  }
+}
