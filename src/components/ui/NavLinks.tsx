@@ -6,6 +6,7 @@ import { LinkButton } from "./LinkButton";
 import { Close, Menu } from "./Icons";
 import { UserAvatar } from "./UserAvatar";
 import { useSession } from "@/hooks/useSession";
+import { twMerge } from "tailwind-merge";
 
 export const NavLinks = () => {
   const [openMenu, setOpenMenu] = useState(false)
@@ -27,7 +28,9 @@ export const NavLinks = () => {
       href: "/contact",
     },
   ], [])
-  const { user } = useSession()
+  const { user, signOutSession } = useSession()
+
+  console.log(user)
 
   return (
     <div>
@@ -35,9 +38,7 @@ export const NavLinks = () => {
         {!openMenu ? <Menu /> : <Close />}
       </button>
       <ul
-        className={`absolute right-0 flex flex-col items-center w-full gap-20 pb-14 text-lg font-medium capitalize bg-white cursor-pointer md:w-fit md:static md:pb-0 md:items-center md:flex-row md:gap-7 transition-all duration-200 ease-in-out z-0 shadow-sm md:shadow-none ${
-          !openMenu ? "-top-[540px]" : "top-28"
-        }`}
+        className={twMerge(`absolute right-0 flex flex-col items-center w-full gap-20 pb-14 text-lg font-medium capitalize bg-white cursor-pointer md:w-fit md:static md:pb-0 md:items-center md:flex-row md:gap-7 transition-all duration-200 ease-in-out z-0 shadow-sm md:shadow-none`, !openMenu ? "-top-[540px]" : "top-28")}
       >
         {links.map(({ text, href }) => (
           <li key={text}>
@@ -51,7 +52,7 @@ export const NavLinks = () => {
         ))}
         <li>
           {user
-            ? <UserAvatar />
+            ? <UserAvatar signOutSession={signOutSession} user={user} />
             : <LinkButton text="acceder" href="/login" />}
         </li>
       </ul>
